@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PayTM Payment Process</title>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #582f9e;
+            border-bottom: 16px solid #0AB861;
+            /* border-left: 16px solid yellow;
+            border-right: 16px solid green; */
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <div style="display: inline-block;margin-top: 130px;">
+
+            <h1>Please wait......</h1>
+            <div class="loader"></div>
+            <form name="f1" id="form1" method="post" action="http://192.168.43.101:3000/api/paytm/request">
+                <!-- <button type="submit" id="user-submit">Submit</button> -->
+                <input type="hidden" id="ORDER_ID" name="ORDER_ID" value="066" /><br>
+                <input type="hidden" id="CUST_ID" name="CUST_ID" value="shine"><br>
+                <input type="hidden" name="INDUSTRY_TYPE_ID" value='<%= config.INDUSTRY_TYPE_ID %>'><br>
+                <input type="hidden" id="CHANNEL_ID" name="CHANNEL_ID" value='<%= config.CHANNEL_ID %>'><br>
+                <input type="hidden" id="TXN_AMOUNT" name="TXN_AMOUNT" value="100"><br>
+                <input type="hidden" name="MID" value='<%= config.MID %>'><br>
+                <input type="hidden" name="WEBSITE" value='<%= config.WEBSITE %>'><br>
+                <input type="hidden" name="PAYTM_MERCHANT_KEY" value='<%= config.PAYTM_MERCHANT_KEY %>'><br>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
